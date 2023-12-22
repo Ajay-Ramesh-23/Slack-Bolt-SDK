@@ -19,8 +19,9 @@ def message(payload):
     event = payload.get('event', {})
     text = event.get('text')
     user_id = event.get('user')
+    channel_id=event.get('channel')
     if BOT_ID != user_id:
-        client.chat_postMessage(channel='#random', text=text)
+        client.chat_postMessage(channel=channel_id, text=text)
 
 if __name__ == "__main__":
     flask_app.run(port=3000)
